@@ -9,8 +9,6 @@ struct Student {
 
 int main() {
     struct Student s;
-    FILE *fptr;
-    fptr = fopen("student.txt", "wb");
 
     printf("Enter name: ");
     scanf("%s", s.name);
@@ -19,12 +17,10 @@ int main() {
     printf("Enter marks: ");
     scanf("%f", &s.marks);
 
-    fwrite(&s, sizeof(struct Student), 1, fptr);
-    fclose(fptr);
+    printf("\nStored Data:\n");
+    printf("Name: %s\n", s.name);
+    printf("Roll: %d\n", s.roll);
+    printf("Marks: %.2f\n", s.marks);
 
-    fptr = fopen("student.txt", "rb");
-    fread(&s, sizeof(struct Student), 1, fptr);
-    printf("\nStored Data:\nName: %s\nRoll: %d\nMarks: %.2f\n", s.name, s.roll, s.marks);
-    fclose(fptr);
     return 0;
 }
